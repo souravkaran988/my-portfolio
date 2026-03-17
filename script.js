@@ -3,38 +3,31 @@
 ================================================ */
 const menuIcon = document.querySelector('#menu-icon');
 const navbar   = document.querySelector('.navbar');
+const overlay  = document.createElement('div');
 
-// Create backdrop overlay dynamically
-const overlay = document.createElement('div');
 overlay.classList.add('nav-overlay');
 document.body.appendChild(overlay);
 
-function openMenu() {
-    if (!menuIcon) return;
-    menuIcon.classList.add('open');
-    navbar.classList.add('open');
-    overlay.classList.add('open');
-    document.body.style.overflow = 'hidden';
-}
-
-function closeMenu() {
-    if (!menuIcon) return;
-    menuIcon.classList.remove('open');
-    navbar.classList.remove('open');
-    overlay.classList.remove('open');
-    document.body.style.overflow = '';
-}
-
 if (menuIcon) {
-    menuIcon.addEventListener('click', () => {
-        navbar.classList.contains('open') ? closeMenu() : openMenu();
+    menuIcon.addEventListener('click', function() {
+        menuIcon.classList.toggle('open');
+        navbar.classList.toggle('open');
+        overlay.classList.toggle('open');
     });
 }
 
-overlay.addEventListener('click', closeMenu);
+overlay.addEventListener('click', function() {
+    menuIcon.classList.remove('open');
+    navbar.classList.remove('open');
+    overlay.classList.remove('open');
+});
 
-document.querySelectorAll('.navbar a').forEach(link => {
-    link.addEventListener('click', closeMenu);
+document.querySelectorAll('.navbar a').forEach(function(link) {
+    link.addEventListener('click', function() {
+        menuIcon.classList.remove('open');
+        navbar.classList.remove('open');
+        overlay.classList.remove('open');
+    });
 });
 
 
