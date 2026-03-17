@@ -955,6 +955,19 @@ span {
     .navbar.open a:nth-child(4) { transition-delay: 0.2s; }
     .navbar.open a:nth-child(5) { transition-delay: 0.25s; }
     .navbar.open a:nth-child(6) { transition-delay: 0.3s; }
+    .navbar.open a:nth-child(7) { transition-delay: 0.35s; }
+
+    /* Fix border-bottom on mobile */
+    .navbar a {
+        display: block;
+        border-bottom: none !important;
+        padding-bottom: 0 !important;
+    }
+
+    .navbar a.active {
+        border-bottom: none !important;
+        text-shadow: 0 0 8px var(--main-color);
+    }
 
     /* Overlay backdrop */
     .nav-overlay {
